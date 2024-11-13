@@ -1,1 +1,8 @@
-Middleeee
+<% messages.forEach(function(element) { %>
+    <div>
+      <p><strong><%= element.user %>:</strong> <%= element.text %></p>
+      <p><em>Added: <%= element.added %></em></p>
+    </div>
+  <% }); %>
+  <a href="/new">Create a new message</a>
+      

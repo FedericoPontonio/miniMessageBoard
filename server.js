@@ -1,6 +1,9 @@
 const express = require('express')
 const app = express()
 const expressLayouts= require('express-ejs-layouts')
+app.use(express.urlencoded({ extended: true }));
+
+
 
 const indexRouter = require('./routes/index')
 
