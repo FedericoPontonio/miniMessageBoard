@@ -5,15 +5,19 @@
   "main": "server.js",
   "scripts": {
     "start": "node  server.js",
-    "devStart": "nodemon server.js"
+    "devStart": "nodemon server.js",
+    "populatedb": "node ./database/populatedb.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@neondatabase/serverless": "^0.10.3",
+    "dotenv": "^16.4.5",
     "ejs": "^3.1.10",
     "express": "^4.21.1",
-    "express-ejs-layouts": "^2.5.1"
+    "express-ejs-layouts": "^2.5.1",
+    "pg": "^8.13.1"
   },
   "devDependencies": {
     "nodemon": "^3.1.7"

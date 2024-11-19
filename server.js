@@ -1,8 +1,8 @@
 const express = require('express')
+require('dotenv').config();
 const app = express()
 const expressLayouts= require('express-ejs-layouts')
 app.use(express.urlencoded({ extended: true }));
-
 
 
 const indexRouter = require('./routes/index')
