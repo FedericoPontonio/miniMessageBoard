@@ -3,19 +3,22 @@ require('dotenv').config();
 
 const { Client } = require("pg");
 
-const SQL = `
+const currentDate = new Date();
+
+const createTable = `
 CREATE TABLE IF NOT EXISTS messages (
   user_id INTEGER PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
   user_name VARCHAR ( 255 ),
-  text VARCHAR ( 255 )
-);
+  text VARCHAR ( 255 ),
+  date TIMESTAMPTZ
+);`
 
-INSERT INTO messages ( user_name, text ) 
+const insertData = `INSERT INTO messages ( user_name, text, date ) 
 VALUES
-  ('Fefè', 'Ciao!'),
-  ('Fra Fra', 'Hola!'),
-  ('Mirko', 'Buenos dìas.');
-`;
+  ('Fefè', 'Ciao!', $1),
+  ('Fra Fra', 'Hola!', $1),
+  ('Mirko', 'Buenos dìas.', $1);
+;`
 
 async function main() {
   console.log("seeding...");
@@ -26,7 +29,8 @@ async function main() {
     },
   });
   await client.connect();
-  await client.query(SQL);
+  await client.query(createTable);
+  await client.query(insertData, [currentDate]);
   await client.end();
   console.log("done");
 }

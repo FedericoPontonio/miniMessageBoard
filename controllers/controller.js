@@ -5,6 +5,12 @@ async function getAllMessages(req, res) {
     return usernames
   };
 
+async function postMessage(requestBody) {
+    const requestBodyWithDate = {...requestBody, date:new Date()}
+    await queries.postMessage(requestBodyWithDate);
+}
+
 module.exports={
     getAllMessages,
+    postMessage,
 };
